@@ -1,0 +1,15 @@
+pages:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - mkdir -p public/assets
+    - cp BroadcastThatNet.css public/
+    - cp "BTN All-In-One.user.js" public/
+    - cp README.md LICENSE public/
+    - cp assets/header.png public/assets/
+  pages: true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
